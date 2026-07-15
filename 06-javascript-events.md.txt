@@ -1,0 +1,197 @@
+# JavaScript Events
+
+## What are Events?
+
+Events are actions that happen in the browser.
+
+Examples:
+
+- Clicking a button
+- Moving the mouse
+- Typing in an input
+- Submitting a form
+- Focusing on an element
+
+JavaScript can listen to these events and execute functions when they happen.
+
+---
+
+# addEventListener()
+
+`addEventListener()` is used to attach an event to an element.
+
+Syntax:
+
+```javascript
+element.addEventListener('event', function);
+
+Example:
+
+var button = document.getElementById('button');
+
+button.addEventListener('click', buttonClick);
+
+function buttonClick(e){
+    console.log('Button clicked');
+}
+Event Object
+
+When an event happens, JavaScript automatically provides an event object.
+
+Example:
+
+function buttonClick(e){
+
+console.log(e);
+
+}
+
+The event object contains information about the event.
+
+Event Properties
+target
+
+Returns the element that triggered the event.
+
+console.log(e.target);
+
+Example:
+
+console.log(e.target.id);
+
+Gets the ID of the clicked element.
+
+className
+
+Gets the class name of the element.
+
+console.log(e.target.className);
+tagName
+
+Gets the HTML tag name.
+
+console.log(e.target.tagName);
+
+Example:
+
+BUTTON
+type
+
+Returns the type of event.
+
+console.log(e.type);
+
+Example:
+
+click
+Mouse Events
+click
+
+Runs when an element is clicked.
+
+button.addEventListener('click', runEvent);
+mousedown
+
+Runs when the mouse button is pressed.
+
+button.addEventListener('mousedown', runEvent);
+mouseup
+
+Runs when the mouse button is released.
+
+button.addEventListener('mouseup', runEvent);
+mouseenter
+
+Runs when the mouse enters an element.
+
+box.addEventListener('mouseenter', runEvent);
+mouseleave
+
+Runs when the mouse leaves an element.
+
+box.addEventListener('mouseleave', runEvent);
+mouseover and mouseout
+
+mouseover runs when moving over an element.
+
+mouseout runs when leaving an element.
+
+Mouse Position
+clientX and clientY
+
+Get mouse position relative to the browser window.
+
+console.log(e.clientX);
+console.log(e.clientY);
+offsetX and offsetY
+
+Get mouse position relative to the target element.
+
+console.log(e.offsetX);
+console.log(e.offsetY);
+Keyboard Events
+
+Keyboard events happen when the user interacts with the keyboard.
+
+keydown
+
+Runs when a key is pressed.
+
+input.addEventListener('keydown', runEvent);
+keyup
+
+Runs when a key is released.
+
+input.addEventListener('keyup', runEvent);
+keypress
+
+Runs when a key is pressed (older event).
+
+input.addEventListener('keypress', runEvent);
+Input Events
+focus
+
+Runs when an element becomes active.
+
+Example:
+
+input.addEventListener('focus', runEvent);
+blur
+
+Runs when an element loses focus.
+
+input.addEventListener('blur', runEvent);
+cut
+
+Runs when text is cut.
+
+input.addEventListener('cut', runEvent);
+paste
+
+Runs when text is pasted.
+
+input.addEventListener('paste', runEvent);
+input
+
+Runs whenever the input value changes.
+
+input.addEventListener('input', runEvent);
+
+Example:
+
+function runEvent(e){
+
+console.log(e.target.value);
+
+}
+Event Handler Function
+
+A function can handle multiple events.
+
+Example:
+
+function runEvent(e){
+
+console.log('EVENT TYPE: ' + e.type);
+
+}

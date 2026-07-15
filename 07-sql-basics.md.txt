@@ -1,0 +1,285 @@
+# SQL Basics
+
+## What is SQL?
+
+SQL stands for:
+
+**Structured Query Language**
+
+SQL is a language used to communicate with databases.
+
+It allows users to:
+
+- Retrieve data
+- Insert new data
+- Update existing data
+- Delete data
+- Manage database information
+
+---
+
+# SELECT Statement
+
+`SELECT` is used to retrieve information from a database.
+
+Example:
+
+```sql
+SELECT CustomerName
+FROM Customers;
+
+This retrieves the CustomerName column from the Customers table.
+
+FROM Statement
+
+FROM specifies the table where the data will be retrieved from.
+
+Example:
+
+SELECT CustomerName
+FROM KCC.dbo.Customers;
+AS Keyword
+
+AS is used to rename columns in the output.
+
+Example:
+
+SELECT CustomerName AS [Customer Name]
+FROM KCC.dbo.Customers;
+
+It changes the display name of the column.
+
+DISTINCT
+
+DISTINCT removes duplicate values.
+
+Example:
+
+SELECT DISTINCT CustomerName
+FROM KCC.dbo.Customers;
+Asterisk (*)
+
+The * symbol selects all columns from a table.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers;
+SELECT TOP
+
+TOP limits the number of returned rows.
+
+Example:
+
+SELECT TOP(3) *
+FROM KCC.dbo.Customers;
+
+Returns only the first 3 rows.
+
+SQL Comments
+
+Single-line comment:
+
+-- This is a comment
+
+Multi-line comment:
+
+/*
+This is
+a comment
+*/
+WHERE Clause
+
+WHERE filters data based on a condition.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE State = 'WA';
+
+Returns customers from Washington.
+
+Comparison Operators
+Not Equal
+
+Using:
+
+<>
+
+or:
+
+!=
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE State <> 'WA';
+
+Returns customers that are not from Washington.
+
+IN Operator
+
+IN is used to search for multiple values.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE State IN ('WA','NY','YT');
+NOT IN Operator
+
+Returns values that are not included in the list.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE State NOT IN ('WA','NY','YT');
+AND and OR Operators
+
+Used to combine multiple conditions.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE CustomerName = 'Trestles'
+AND (Country='United States' OR Country='France');
+LIKE Operator
+
+Used for pattern searching.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE CustomerName LIKE 'A%';
+
+A% means names that start with the letter A.
+
+NOT LIKE
+
+Returns values that do not match a pattern.
+
+Example:
+
+SELECT *
+FROM KCC.dbo.Customers
+WHERE CustomerName NOT LIKE 'A%';
+Comparison Operators
+
+Greater than:
+
+WHERE OrderTotal > 1000
+
+Less than:
+
+WHERE OrderTotal < 1000
+
+Equal:
+
+WHERE OrderTotal = 1000
+BETWEEN Operator
+
+Used to select values inside a range.
+
+Example:
+
+WHERE OrderTotal BETWEEN 1000 AND 2000;
+JOIN
+
+A JOIN combines data from multiple tables.
+
+Example:
+
+We have:
+
+Orders table
+Customers table
+
+The customer name and phone number are stored in the Customers table, while order information is stored in Orders.
+
+Example:
+
+SELECT 
+OrderDate,
+Phone,
+CustomerName
+FROM dbo.Orders
+JOIN dbo.Customers
+ON dbo.Orders.CustomerID = dbo.Customers.CustomerID;
+Using Aliases
+
+Aliases make queries easier to read.
+
+Example:
+
+SELECT
+o.OrderDate,
+c.Phone,
+c.CustomerName
+
+FROM dbo.Orders o
+
+JOIN dbo.Customers c
+
+ON o.CustomerID = c.CustomerID;
+
+o represents Orders.
+
+c represents Customers.
+
+INNER JOIN
+
+Returns only records that exist in both tables.
+
+Example:
+
+SELECT *
+FROM dbo.Orders o
+
+INNER JOIN dbo.Customers c
+
+ON o.CustomerID = c.CustomerID;
+OUTER JOIN
+
+Returns matching records and also records that exist in one table without a match.
+
+Example:
+
+SELECT *
+FROM dbo.Orders o
+
+LEFT OUTER JOIN dbo.Customers c
+
+ON o.CustomerID = c.CustomerID;
+
+A LEFT JOIN returns:
+
+All records from the left table
+Matching records from the right table
+Specifying Columns from Tables
+
+When column names exist in multiple tables, specify the table name.
+
+Example:
+
+SELECT
+o.OrderDate,
+o.Phone,
+c.CustomerName
+
+FROM dbo.Orders o
+
+LEFT JOIN dbo.Customers c
+
+ON o.CustomerID = c.CustomerID;
+This avoids confusion and makes the query clearer.
+
+
+
+
+
+
