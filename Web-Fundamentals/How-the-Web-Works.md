@@ -1,4 +1,4 @@
-# How the Web Works
+# 🌐 How the Web Works
 
 ## Internet vs Web
 
@@ -6,57 +6,87 @@ The Internet and the Web are two different concepts.
 
 ### Internet
 
-The Internet is the global network infrastructure that connects devices together. It allows computers and networks to communicate through hardware such as routers, cables, and wireless connections.
+The Internet is the global network infrastructure that connects devices together. It allows computers and networks to communicate through routers, cables, and wireless connections.
 
 ### Web
 
-The Web (World Wide Web) is a service that runs on top of the Internet. It allows users to access information and resources through websites and web applications.
+The Web (World Wide Web) is a service that runs on top of the Internet. It allows users to access websites and web applications through web browsers.
 
 ---
 
-## Client and Server
+# URL Structure
 
-### Client
+Example:
+
+```
+https://example.com:443/products?id=10#reviews
+```
+
+| Component | Description |
+|------------|-------------|
+| `https` | Protocol |
+| `example.com` | Domain |
+| `443` | Port |
+| `/products` | Path |
+| `?id=10` | Query Parameter |
+| `#reviews` | Fragment (Processed by the browser and not sent to the server) |
+
+---
+
+# Client and Server
+
+## Client
 
 A client is a device or application that sends requests to a server.
 
 Examples:
-- Web browsers (Chrome, Firefox)
+
+- Web browsers
 - Mobile applications
+- Desktop applications
 
-The browser can act as a client by sending requests to web servers using URLs and protocols such as HTTP.
+The browser acts as a client by sending HTTP requests to web servers.
 
-### Server
+## Server
 
-A server hosts resources and responds to client requests by delivering the requested resources.
+A server receives client requests, processes them, and returns the requested resources.
 
-Resources can include:
-- HTML files
+Resources may include:
+
+- HTML pages
 - Images
 - Videos
-- Links
-- Other data
+- JSON data
+- Files
+- APIs
 
 ---
 
 # DNS (Domain Name System)
 
-DNS is a system that translates human-readable domain names into IP addresses.
+DNS translates human-readable domain names into IP addresses.
 
 Example:
+
+```
 google.com
+        ↓
+142.250.xxx.xxx
+```
 
+## Domain Structure
 
-Domain structure:
+```
+google.com
+```
 
 - `google` → Second-Level Domain (SLD)
 - `.com` → Top-Level Domain (TLD)
 
-Types of domains:
-
 ### gTLD (Generic Top-Level Domain)
 
 Examples:
+
 - `.com`
 - `.org`
 - `.net`
@@ -64,6 +94,7 @@ Examples:
 ### ccTLD (Country Code Top-Level Domain)
 
 Examples:
+
 - `.ma`
 - `.uk`
 - `.fr`
@@ -72,9 +103,9 @@ Examples:
 
 # IP Address
 
-An IP address is a unique identifier assigned to devices connected to a network.
+An IP address is a unique identifier assigned to a device connected to a network.
 
-It allows devices to communicate with each other over the Internet.
+It enables communication between devices over the Internet.
 
 ---
 
@@ -82,19 +113,45 @@ It allows devices to communicate with each other over the Internet.
 
 ## Web Server
 
-Responsible for handling HTTP requests and returning web resources.
+Handles HTTP requests and serves web resources.
+
+Examples:
+
+- Apache
+- Nginx
+- IIS
+
+---
 
 ## Application Server
 
-Responsible for running application logic and processing requests.
+Processes application logic and generates responses.
+
+Examples:
+
+- PHP
+- Node.js
+- Java
+- Python
+
+---
 
 ## Database Server
 
-Responsible for storing and managing application data.
+Stores and manages application data.
+
+Examples:
+
+- MySQL
+- PostgreSQL
+- Microsoft SQL Server
+- MongoDB
+
+---
 
 ## Load Balancer
 
-A load balancer distributes incoming requests between multiple servers to improve performance and availability.
+Distributes incoming traffic across multiple servers to improve availability and performance.
 
 ---
 
@@ -102,19 +159,56 @@ A load balancer distributes incoming requests between multiple servers to improv
 
 ## HTTP
 
-HTTP stands for:
-
 **HyperText Transfer Protocol**
 
-It is a communication protocol used between clients and servers to exchange resources and data.
+A communication protocol used between clients and servers.
+
+---
 
 ## HTTPS
 
-HTTPS stands for:
-
 **HyperText Transfer Protocol Secure**
 
-It uses encryption through TLS to protect data transferred between the client and server.
+HTTPS encrypts communication using TLS to protect transmitted data.
+
+---
+
+# HTTP Request
+
+Example:
+
+```http
+GET /account?id=1 HTTP/1.1
+Host: example.com
+Cookie: session=abc123
+User-Agent: Mozilla/5.0
+```
+
+### Components
+
+- Request Line
+- Headers
+- Body (Optional)
+
+---
+
+# HTTP Response
+
+Example:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+Set-Cookie: session=abc123
+
+<html>...</html>
+```
+
+### Components
+
+- Status Line
+- Headers
+- Body
 
 ---
 
@@ -122,82 +216,169 @@ It uses encryption through TLS to protect data transferred between the client an
 
 ## GET
 
-Used to retrieve data from a server.
+Retrieves data from the server.
 
 Examples:
-- Loading a webpage
+
+- Opening a webpage
+- Viewing a profile
 - Downloading an image
+
+---
 
 ## POST
 
-Used to send data to a server.
+Sends data to the server.
 
 Examples:
-- Login forms
-- Creating new resources
+
+- Login
+- Registration
+- Creating resources
+
+---
 
 ## PUT
 
-Used to update existing resources.
+Updates an existing resource.
+
+---
 
 ## DELETE
 
-Used to remove resources from a server.
+Deletes a resource.
 
 ---
 
 # HTTP Status Codes
 
-## 1xx - Informational
+## 1xx — Informational
 
-The request was received and the server is processing it.
+The request has been received.
 
-## 2xx - Success
+---
 
-The request was successfully received and processed.
-
-Example:
-200 OK
-
-## 3xx - Redirection
-
-The client needs to take additional action.
+## 2xx — Success
 
 Examples:
-301 Moved Permanently
-302 Found
 
+- 200 OK
+- 201 Created
+- 204 No Content
 
-## 4xx - Client Error
+---
 
-The request contains an error from the client side.
+## 3xx — Redirection
 
 Examples:
-400 Bad Request
-401 Unauthorized
-403 Forbidden
-404 Not Found
 
+- 301 Moved Permanently
+- 302 Found
 
-## 5xx - Server Error
+---
 
-The server failed while processing a valid request.
+## 4xx — Client Errors
 
-Example:
-500 Internal Server Error
+Examples:
 
+- 400 Bad Request
+- 401 Unauthorized
+- 403 Forbidden
+- 404 Not Found
+
+---
+
+## 5xx — Server Errors
+
+Examples:
+
+- 500 Internal Server Error
+- 502 Bad Gateway
+- 503 Service Unavailable
+
+---
+
+# Common HTTP Headers
+
+## Request Headers
+
+- Host
+- Cookie
+- Authorization
+- User-Agent
+- Referer
+- Origin
+- Accept
+- Content-Type
+
+---
+
+## Response Headers
+
+- Set-Cookie
+- Location
+- Server
+- Content-Type
+- Content-Length
+- Access-Control-Allow-Origin
+
+---
+
+# Content Types (MIME Types)
+
+Examples:
+
+```
+text/html
+application/json
+application/xml
+text/css
+application/javascript
+image/png
+image/jpeg
+```
 
 ---
 
 # HTTP/2
 
-HTTP/2 improves web performance and efficiency through:
+HTTP/2 improves web performance through:
 
 - Multiplexing
-- Header compression
-- Better resource handling
+- Header Compression
+- Faster Resource Loading
 
-Security mainly depends on HTTPS/TLS.
+Security still depends on HTTPS (TLS).
+
+---
+
+# URL Encoding
+
+Examples:
+
+| Character | Encoded |
+|-----------|----------|
+| Space | `%20` |
+| `/` | `%2F` |
+| `.` | `%2E` |
+
+Example:
+
+```
+../../../etc/passwd
+```
+
+URL Encoded:
+
+```
+..%2F..%2F..%2Fetc%2Fpasswd
+```
+
+Double URL Encoded:
+
+```
+..%252F..%252F..%252Fetc%252Fpasswd
+```
 
 ---
 
@@ -205,25 +386,33 @@ Security mainly depends on HTTPS/TLS.
 
 ## Cookies
 
-Cookies are small pieces of data stored by the browser and sent with HTTP requests.
-
-They help websites remember users and maintain sessions.
+Cookies are small pieces of data stored in the browser and sent with every request.
 
 Example:
 
-1. The user logs in with a username and password.
-2. The server verifies the credentials.
-3. The server creates a session.
-4. The browser stores a session ID in a cookie.
-5. Future requests include the cookie to identify the user.
+1. User logs in.
+2. Server verifies credentials.
+3. Server creates a session.
+4. Browser stores the session ID inside a cookie.
+5. Future requests include the cookie.
 
 ---
 
-# Sessions
+## Cookie Attributes
 
-A session is a server-side mechanism used to maintain a user's state after authentication.
+- Secure
+- HttpOnly
+- SameSite
+- Expires
+- Max-Age
 
-The server stores session information and connects it to a session ID.
+---
+
+## Sessions
+
+A session is server-side storage that keeps track of authenticated users.
+
+The browser stores only the Session ID.
 
 ---
 
@@ -231,13 +420,19 @@ The server stores session information and connects it to a session ID.
 
 A token is a temporary credential used to access protected resources.
 
-Tokens can have:
+Common properties:
 
-- Expiration time
-- Limited permissions
-- Specific access rights
+- Expiration Time
+- Limited Permissions
+- Access Scope
 
-They allow users to access resources without sending their username and password with every request.
+Example:
+
+```
+JWT
+OAuth Access Token
+API Token
+```
 
 ---
 
@@ -245,61 +440,154 @@ They allow users to access resources without sending their username and password
 
 ## Authentication
 
-Authentication is the process of verifying the identity of a user.
+Authentication verifies a user's identity.
 
-It answers:
+**Question:**
 
-**Who are you?**
+> Who are you?
 
-Types of authentication:
-
-### Something you know
 Examples:
+
+### Something You Know
+
 - Password
 - PIN
 
-### Something you have
-Examples:
-- Security key
-- Phone
+### Something You Have
 
-### Something you are
-Examples:
+- Phone
+- Security Key
+
+### Something You Are
+
 - Fingerprint
-- Biometrics
+- Face Recognition
 
 ---
 
 ## Authorization
 
-Authorization determines what resources or actions a user is allowed to access.
+Authorization determines what an authenticated user is allowed to access.
 
-It answers:
+**Question:**
 
-**What are you allowed to do?**
+> What are you allowed to do?
+
+---
+
+# User-Controlled Input
+
+User-controlled input is any data that can be modified by the user before reaching the server.
+
+Examples:
+
+```
+?id=1
+
+role=user
+
+filename=image.jpg
+
+Cookie
+
+Headers
+
+JSON Body
+```
+
+**Golden Rule**
+
+> Never trust user-controlled input.
+
+---
+
+# Client Side vs Server Side
+
+## Client Side
+
+Runs inside the browser.
+
+Examples:
+
+- HTML
+- CSS
+- JavaScript
+
+---
+
+## Server Side
+
+Runs on the server.
+
+Examples:
+
+- PHP
+- Java
+- Python
+- Node.js
+- C#
+- Go
+
+**Important**
+
+Security decisions must always be enforced on the server side.
 
 ---
 
 # Same-Origin Policy (SOP)
 
-Same-Origin Policy is a browser security mechanism that prevents a website from accessing sensitive data from another website with a different origin.
+Same-Origin Policy is a browser security mechanism that prevents websites from reading data from another origin.
 
-An origin is based on:
+An origin consists of:
 
 - Protocol
 - Domain
 - Port
 
+Example:
+
+```
+https://example.com
+```
+
+cannot access
+
+```
+https://another.com
+```
+
+because the origins are different.
+
 ---
 
-# CORS
+# CORS (Cross-Origin Resource Sharing)
 
-CORS stands for:
+CORS allows servers to specify which origins are allowed to access their resources.
 
-**Cross-Origin Resource Sharing**
+Example:
 
-It is a mechanism that allows servers to specify which external websites are allowed to access their resources.
+Request:
 
-Servers control this using HTTP headers such as:
-Access-Control-Allow-Origin
+```http
+Origin: https://example.com
+```
 
+Response:
+
+```http
+Access-Control-Allow-Origin: https://example.com
+```
+
+---
+
+# Key Takeaways
+
+- The Internet is the network, while the Web is a service running on top of it.
+- Clients send requests, and servers process and respond to them.
+- DNS translates domain names into IP addresses.
+- HTTP is used for communication, while HTTPS secures it using TLS.
+- Sessions and cookies maintain user authentication.
+- Authentication verifies identity, while authorization determines permissions.
+- Never trust user-controlled input.
+- Security decisions must always be enforced on the server side.
+- SOP protects users by restricting cross-origin access, while CORS allows controlled exceptions.
