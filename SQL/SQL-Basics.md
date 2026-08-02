@@ -350,4 +350,4 @@ Important rule:
     Never trust user input directly in SQL queries. Always use secure methods such as parameterized queries.
 
 
-This is a good addition to your cybersecurity GitHub because SQL knowledge is required before learning **SQL Injection** in PortSwigger.
+
